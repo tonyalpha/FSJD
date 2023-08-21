@@ -4,29 +4,28 @@ public class Main {
     static public int balance = 0;
     public void withdraw(int amount) {
         synchronized (this){
-            System.out.println("Trying to withdraw: " + amount);
-            if (balance <= 0) {
+            if (balance <= 0 || balance < amount) {
                 try {
                     System.out.println("Insufficient funds." +
                             "\nWaiting for funds to update.");
                     wait();
                 } catch (InterruptedException ie) {
-                    System.out.println("Thread got interrupted");
+                    System.out.println("Withdrawing " + amount + " from balance.");
+                    balance -= amount;
+                    System.out.println("Balance left: " + balance);
                 }
+            } else {
+                System.out.println("Withdrawing " + amount + " from balance.");
+                balance -= amount;
+                System.out.println("Balance left: " + balance);
             }
         }
-        balance -= amount;
-        System.out.println("Withdrawal successful!");
-        System.out.println("Balance left: " + balance);
     }
 
     public void deposit(int amount) {
         System.out.println("Depositing amount: " + amount);
         balance += amount;
         System.out.println("New balance: " + balance);
-        synchronized (this){
-            notifyAll();
-        }
     }
     public static void main(String[] args) {
         Main main = new Main();
@@ -48,6 +47,7 @@ public class Main {
                     ie.printStackTrace();
                 }
                 main.deposit(2000);
+                thread1.interrupt();
             }
         });
         thread2.start();
