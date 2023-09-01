@@ -1,4 +1,4 @@
-package section17_205_serialization_of_objects;
+package section17._205_serialization_of_objects;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,7 +10,7 @@ public class WriteObject {
         Vehicle bike = new Vehicle("Bike", 5);
         Vehicle car = new Vehicle("Car", 10);
 
-        try(FileOutputStream fos = new FileOutputStream("C:\\Users\\asherri\\OneDrive - Facilicom\\Documents\\Projects\\FSJD\\section17_205_serialization_of_objects\\vehicles.dat")) {
+        try(FileOutputStream fos = new FileOutputStream("C:\\Users\\asherri\\OneDrive - Facilicom\\Documents\\Projects\\FSJD\\section17\\_205_serialization_of_objects\\vehicles.dat")) {
             try(ObjectOutputStream oos = new ObjectOutputStream(fos)){
                 oos.writeObject(bike);
                 oos.writeObject(car);

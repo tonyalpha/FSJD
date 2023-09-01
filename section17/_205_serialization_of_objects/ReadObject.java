@@ -1,4 +1,4 @@
-package section17_205_serialization_of_objects;
+package section17._205_serialization_of_objects;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 
 public class ReadObject {
     public static void main(String[] args) {
-        try(FileInputStream fis = new FileInputStream("C:\\Users\\asherri\\OneDrive - Facilicom\\Documents\\Projects\\FSJD\\section17_205_serialization_of_objects\\vehicles.dat")) {
+        try(FileInputStream fis = new FileInputStream("C:\\Users\\asherri\\OneDrive - Facilicom\\Documents\\Projects\\FSJD\\section17\\_205_serialization_of_objects\\vehicles.dat")) {
             try(ObjectInputStream ois = new ObjectInputStream(fis)) {
                 Vehicle v1 = (Vehicle) ois.readObject();
                 Vehicle v2 = (Vehicle) ois.readObject();

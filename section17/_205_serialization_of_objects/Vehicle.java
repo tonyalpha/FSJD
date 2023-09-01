@@ -1,4 +1,4 @@
-package section17_205_serialization_of_objects;
+package section17._205_serialization_of_objects;
 
 import java.io.Serializable;
 
